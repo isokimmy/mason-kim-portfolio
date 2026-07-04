@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Work — SQL Asteroids · Mason Kim</title>
+<meta name="description" content="SQL Asteroids — a browser arcade game that teaches SQL through gameplay. Built by Mason Kim in vanilla JavaScript on the Canvas 2D API." />
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="grain" aria-hidden="true"></div>
+<div class="cur cur-ring" aria-hidden="true"></div>
+<div class="cur cur-dot" aria-hidden="true"></div>
+<div id="progress"></div>
+
+<header id="hdr">
+  <div class="wrap">
+    <nav>
+      <a href="index.html" class="wordmark" aria-label="Mason Kim home">
+        <svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 3 21 21M21 3 3 21" stroke="currentColor" stroke-width="1"/></svg>
+        MASON&nbsp;KIM
+      </a>
+      <div class="nav-links">
+        <a class="navlink" href="index.html">About</a>
+        <a class="navlink" href="work.html" aria-current="page">Work</a>
+        <a class="btn-outline contact-btn magnetic" href="mailto:mason04kim@gmail.com">Contact</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero compact">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="eyebrow">
+        <span class="label">Selected Work — 01</span>
+        <span class="label" style="display:flex;align-items:center;gap:12px"><span class="dotpulse"></span>Live &amp; playable</span>
+      </div>
+      <h1 class="display">
+        <span class="line"><span class="w"><i>SQL</i></span></span>
+        <span class="line dim"><span class="w"><i>Asteroids.</i></span></span>
+      </h1>
+      <p class="hero-sub">A browser arcade game that <span class="fog">teaches SQL through gameplay</span> — destroy asteroids, get quizzed, and level up your database knowledge in a retro 90s arcade aesthetic.</p>
+      <div class="hero-cta-row">
+        <a class="btn-outline btn-lg magnetic" href="https://isokimmy.github.io/sql-asteroids/" target="_blank" rel="noopener">Play the game
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17 17 7M8 7h9v9"/></svg>
+        </a>
+        <a class="link-cta" href="https://github.com/isokimmy/sql-asteroids" target="_blank" rel="noopener">View source
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          <span class="bar"></span>
+        </a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num mono-num" data-count="25">0</div><div class="lbl">SQL questions</div></div>
+      <div class="stat"><div class="num mono-num" data-count="4">0</div><div class="lbl">difficulty tiers</div></div>
+      <div class="stat"><div class="num mono-num" data-count="5">0</div><div class="lbl">visual themes</div></div>
+      <div class="stat"><div class="num mono-num" data-count="3">0</div><div class="lbl">lives to spend</div></div>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <!-- Overview -->
+  <section class="band" style="border-top:none;padding-top:0">
+    <div class="band-head reveal"><span class="n">Role</span><h3 class="mask"><span>Game Developer · Solo build</span></h3></div>
+    <p class="band-lead reveal">Jun 2026 – Present · Toronto, ON. I designed and built <span class="on">SQL Asteroids</span> end-to-end — an interactive learning game that turns the classic arcade loop into a database-fluency drill. Clear 10 × level asteroids to trigger a quiz; answer correctly to advance. Every system, from the physics to the question bank, is <span class="on">hand-written in vanilla JavaScript</span> with zero dependencies.</p>
+  </section>
+
+  <!-- How to play -->
+  <section class="band">
+    <div class="band-head reveal"><span class="n">01</span><h3 class="mask"><span>How to play</span></h3></div>
+    <div class="play-grid">
+      <div class="reveal">
+        <div class="controls-title">Controls</div>
+        <div class="controls">
+          <div class="control"><div class="keys"><span class="key">←</span><span class="key">→</span></div><div class="act">Rotate ship</div></div>
+          <div class="control"><div class="keys"><span class="key">↑</span></div><div class="act">Thrust forward</div></div>
+          <div class="control"><div class="keys"><span class="key">Space</span></div><div class="act">Fire cannon</div></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="rules-title">The loop</div>
+        <ul class="rules">
+          <li>Destroy <b>10 × level</b> asteroids to trigger a SQL quiz.</li>
+          <li>Answer correctly <span class="fog">→ advance to the next level.</span></li>
+          <li>Get hit? A quiz appears — answer right to <span class="fog">recover the lost life.</span></li>
+          <li>Wrong answer? No benefit — keep fighting.</li>
+          <li>You have <b>3 lives</b>. Don't waste them.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SQL topics -->
+  <section class="band">
+    <div class="band-head reveal"><span class="n">02</span><h3 class="mask"><span>SQL topics by level</span></h3></div>
+    <p class="band-lead reveal" style="margin-bottom:44px">Questions get progressively harder — from single-table basics to window functions and CTEs.</p>
+    <table class="topics reveal">
+      <tr><td class="lvl">01</td><td class="top"><b>SELECT</b>, WHERE, ORDER BY, DISTINCT, LIMIT</td></tr>
+      <tr><td class="lvl">02</td><td class="top"><b>INNER / LEFT / FULL OUTER JOIN</b>, GROUP BY, HAVING, aggregate functions</td></tr>
+      <tr><td class="lvl">03</td><td class="top"><b>Subqueries</b>, EXISTS, COALESCE, IS NULL, aliases</td></tr>
+      <tr><td class="lvl">04</td><td class="top"><b>Window functions</b> (ROW_NUMBER, RANK, DENSE_RANK, LAG, SUM OVER), CTEs (WITH)</td></tr>
+    </table>
+  </section>
+
+  <!-- Themes -->
+  <section class="band">
+    <div class="band-head reveal"><span class="n">03</span><h3 class="mask"><span>Visual themes</span></h3></div>
+    <p class="band-lead reveal" style="margin-bottom:40px">Five swappable palettes recolor nebulae, asteroids, ship, bullets, HUD, and particles — previewed live on the start screen.</p>
+    <div class="reveal">
+      <div class="theme-row">
+        <div class="theme-name">Deep Space</div>
+        <div class="theme-pal"><div class="swatches"><span class="sw" style="background:#7C3AED"></span><span class="sw" style="background:#22D3EE"></span><span class="sw" style="background:#E23AE2"></span></div><div class="pal-names">Purple / Cyan / Magenta</div></div>
+      </div>
+      <div class="theme-row">
+        <div class="theme-name">Acid Neon</div>
+        <div class="theme-pal"><div class="swatches"><span class="sw" style="background:#22C55E"></span><span class="sw" style="background:#A3E635"></span><span class="sw" style="background:#14B8A6"></span></div><div class="pal-names">Matrix Green / Lime / Teal</div></div>
+      </div>
+      <div class="theme-row">
+        <div class="theme-name">Solar Storm</div>
+        <div class="theme-pal"><div class="swatches"><span class="sw" style="background:#F97316"></span><span class="sw" style="background:#EF4444"></span><span class="sw" style="background:#F59E0B"></span></div><div class="pal-names">Orange / Red / Gold</div></div>
+      </div>
+      <div class="theme-row">
+        <div class="theme-name">Synthwave</div>
+        <div class="theme-pal"><div class="swatches"><span class="sw" style="background:#EC4899"></span><span class="sw" style="background:#8B5CF6"></span><span class="sw" style="background:#3B82F6"></span></div><div class="pal-names">Hot Pink / Violet / Electric Blue</div></div>
+      </div>
+      <div class="theme-row">
+        <div class="theme-name">Ghost</div>
+        <div class="theme-pal"><div class="swatches"><span class="sw" style="background:#EAF2FF"></span><span class="sw" style="background:#C0C0C8"></span><span class="sw" style="background:#A9C7E8"></span></div><div class="pal-names">Ice White / Silver / Pale Blue</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="band">
+    <div class="band-head reveal"><span class="n">04</span><h3 class="mask"><span>Under the hood</span></h3></div>
+    <div class="feat-grid reveal">
+      <div class="feat"><h4>Real-time physics</h4><p>Thrust, friction, momentum, and screen-wrapping — a full arcade motion model.</p></div>
+      <div class="feat"><h4>Asteroid splitting</h4><p>Large → medium → small fragments before an asteroid is fully destroyed.</p></div>
+      <div class="feat"><h4>Adaptive quiz system</h4><p>25 questions across 4 tiers; difficulty scales with level, no repeats until the pool is exhausted.</p></div>
+      <div class="feat"><h4>Procedural background</h4><p>Animated nebula gradients, a 3-tier twinkling starfield, and a CRT scanline overlay.</p></div>
+      <div class="feat"><h4>Five visual themes</h4><p>One switch recolors every element on screen — nebulae to particles.</p></div>
+      <div class="feat"><h4>Zero dependencies</h4><p>A single HTML + JS build that opens in any browser. No framework, no bundler.</p></div>
+    </div>
+  </section>
+
+  <!-- Tech -->
+  <section class="band">
+    <div class="band-head reveal"><span class="n">05</span><h3 class="mask"><span>Tech stack</span></h3></div>
+    <div class="tags reveal" style="margin-bottom:40px">
+      <span class="tag">Vanilla JavaScript</span><span class="tag">Canvas 2D API</span><span class="tag">HTML / CSS</span>
+      <span class="tag">Game Loop</span><span class="tag">Collision Detection</span><span class="tag">Procedural Rendering</span>
+    </div>
+    <p class="band-lead reveal">Every graphic is drawn programmatically on the Canvas 2D API — no sprites, no assets. The game loop, physics, collision detection, quiz overlay, and theme engine are all custom.</p>
+    <div class="hero-cta-row reveal" style="animation:none;opacity:1;margin-top:44px">
+      <a class="btn-outline btn-lg magnetic" href="https://isokimmy.github.io/sql-asteroids/" target="_blank" rel="noopener">Play SQL Asteroids
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17 17 7M8 7h9v9"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- More work -->
+  <section class="band">
+    <div class="band-head reveal"><span class="n">More</span><h3 class="mask"><span>Other work</span></h3></div>
+    <div class="cs-list">
+      <article class="cs reveal">
+        <div class="idx mono-num">02</div>
+        <div class="cs-main">
+          <h3 class="cs-title">Clarq</h3>
+          <div class="cs-org">Founding Product Manager</div>
+          <div class="cs-place">Waterloo, ON · Jun – Sept 2025</div>
+        </div>
+        <div class="cs-side">
+          <p class="cs-body" style="margin-bottom:20px">A prompt-engineering tool that refines prompts into best-practice versions, powered by a custom MCP server. Owned product requirements, PRDs, and user-feedback loops.</p>
+          <div class="cs-metrics">
+            <div class="m"><b class="mono-num" data-count="8" data-prefix="$" data-suffix="K">$0</b><span>CAD pre-seed</span></div>
+            <div class="m"><b class="mono-num" data-count="2" data-suffix="K+">0</b><span>signups</span></div>
+            <div class="m"><b class="mono-num" data-count="800" data-suffix="K+">0</b><span>views</span></div>
+          </div>
+          <div class="cs-tags"><span class="tag">Product</span><span class="tag">MCP Server</span><span class="tag">Fundraising</span><span class="tag">Go-to-Market</span></div>
+        </div>
+      </article>
+      <article class="cs reveal">
+        <div class="idx mono-num">03</div>
+        <div class="cs-main">
+          <h3 class="cs-title">Brixl Inc.</h3>
+          <div class="cs-org">Data Analyst · Brixl App</div>
+          <div class="cs-place">Toronto, ON · May – July 2024</div>
+        </div>
+        <div class="cs-side">
+          <p class="cs-body" style="margin-bottom:20px">Built a prototype database to establish Brixl's initial data foundation, with indexes and views for fast access. Analyzed beta-user behaviour in MySQL to surface trends that informed product decisions.</p>
+          <div class="cs-tags"><span class="tag">MySQL</span><span class="tag">Database Design</span><span class="tag">Product Insights</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact reveal">
+    <div class="label kick" style="margin-bottom:26px">Contact</div>
+    <h2 class="mask"><span>Let's work</span></h2><h2 class="mask"><span>together.</span></h2>
+    <p class="lead">Have a role, a project, or just want to talk shop about product and data? My inbox is open.</p>
+    <div class="contact-row">
+      <a class="link-cta" href="mailto:mason04kim@gmail.com">mason04kim@gmail.com
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17 17 7M8 7h9v9"/></svg>
+        <span class="bar"></span>
+      </a>
+      <a class="link-cta" href="tel:6472165046">647-216-5046
+        <span class="bar"></span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <span>© <span id="yr"></span> Mason Kim — Designed &amp; built in Toronto.</span>
+    <div class="foot-links">
+      <a href="index.html">About</a>
+      <a href="mailto:mason04kim@gmail.com">Email</a>
+      <a href="https://linkedin.com/in/mason04kim" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

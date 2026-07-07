@@ -60,6 +60,39 @@
     }
   }
 
+  /* ---- Prism: cubes clump, burst apart, then line up spelling MASON ---- */
+  (function(){
+    var svg=document.querySelector('.prism svg'); if(!svg) return;
+    var stage=svg.querySelector('.stage'), units=svg.querySelectorAll('.cubes .u');
+    if(!stage || !units.length) return;
+    /* keyframe cube CENTERS [cx,cy,scale]; SVG translate = (cx, cy - 64*scale) */
+    var CL=[[310,80,.5],[350,85,.55],[330,95,.5],[315,100,.52],[345,78,.48]];   /* clump */
+    var DS=[[110,60,.72],[250,132,.5],[330,40,.78],[430,135,.55],[560,55,.66]]; /* disperse */
+    var RW=[[90,90,.6],[210,90,.6],[330,90,.6],[450,90,.6],[570,90,.6]];        /* row */
+    function setC(u,c){ u.setAttribute('transform','translate('+c[0].toFixed(1)+','+(c[1]-64*c[2]).toFixed(1)+') scale('+c[2].toFixed(3)+')'); }
+    function mix(a,b,k){ return [a[0]+(b[0]-a[0])*k, a[1]+(b[1]-a[1])*k, a[2]+(b[2]-a[2])*k]; }
+    function outc(p){ return 1-Math.pow(1-p,3); }
+    function io(p){ return p<.5 ? 4*p*p*p : 1-Math.pow(-2*p+2,3)/2; }
+    var HOLD1=450, EXPL=800, HOLD2=220, FORM=1150, STAG=80;
+    var t1=HOLD1, t2=t1+EXPL, t3=t2+HOLD2;
+    units.forEach(function(u,i){ setC(u,CL[i]); });
+    var t0=null;
+    function frame(ts){
+      if(t0===null) t0=ts;
+      var e=ts-t0, done=true;
+      units.forEach(function(u,i){
+        var c;
+        if(e<t1){ c=CL[i]; done=false; }
+        else if(e<t2){ c=mix(CL[i],DS[i],outc((e-t1)/EXPL)); done=false; }
+        else if(e<t3){ c=DS[i]; done=false; }
+        else { var p=Math.min(Math.max((e-t3-i*STAG)/FORM,0),1); if(p<1) done=false; c=mix(DS[i],RW[i],io(p)); }
+        setC(u,c);
+      });
+      if(!done) requestAnimationFrame(frame); else stage.classList.add('settled');
+    }
+    requestAnimationFrame(frame);
+  })();
+
   /* ---- Magnetic focal elements (clamped, lerped) ---- */
   if(fine && !reduce){
     document.querySelectorAll('.magnetic').forEach(function(el){

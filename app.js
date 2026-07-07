@@ -88,7 +88,20 @@
         else { var p=Math.min(Math.max((e-t3-i*STAG)/FORM,0),1); if(p<1) done=false; c=mix(DS[i],RW[i],io(p)); }
         setC(u,c);
       });
-      if(!done) requestAnimationFrame(frame); else stage.classList.add('settled');
+      if(!done) requestAnimationFrame(frame); else { stage.classList.add('settled'); revealLetters(); }
+    }
+    function revealLetters(){
+      var letters=svg.querySelectorAll('.letters .ltr'), LDUR=520, LSTAG=180, l0=null;
+      function lf(ts){
+        if(l0===null) l0=ts;
+        var e=ts-l0, ld=true;
+        letters.forEach(function(t,i){
+          var p=Math.min(Math.max((e-i*LSTAG)/LDUR,0),1); if(p<1) ld=false;
+          t.style.opacity=(1-Math.pow(1-p,2)).toFixed(3); /* ease-out fade, left to right */
+        });
+        if(!ld) requestAnimationFrame(lf);
+      }
+      requestAnimationFrame(lf);
     }
     requestAnimationFrame(frame);
   })();

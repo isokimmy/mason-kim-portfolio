@@ -125,12 +125,7 @@ nav{display:flex;align-items:center;justify-content:space-between;height:76px;ga
 /* MASON letters revealed inside the cubes after they settle */
 .prism text.ltr{fill:var(--bone);font-family:'General Sans','Inter',sans-serif;font-weight:500;font-size:32px;
   letter-spacing:0;opacity:0;paint-order:stroke;stroke:rgba(16,16,16,.55);stroke-width:3px}
-.stage.settled .ltr{opacity:1;transition:opacity .55s var(--ease)}
-.stage.settled .ltr:nth-child(1){transition-delay:.04s}
-.stage.settled .ltr:nth-child(2){transition-delay:.12s}
-.stage.settled .ltr:nth-child(3){transition-delay:.20s}
-.stage.settled .ltr:nth-child(4){transition-delay:.28s}
-.stage.settled .ltr:nth-child(5){transition-delay:.36s}
+/* letters fade in left-to-right via JS (app.js revealLetters), so it works under reduced-motion too */
 @media(max-width:920px){
   .prism{max-width:460px}
   .prism .parallax{transform:none}
